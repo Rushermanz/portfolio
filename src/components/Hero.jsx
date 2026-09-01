@@ -116,7 +116,7 @@ export default function Hero() {
                 <Briefcase size={20} className="key-detail-icon" />
                 <div className="key-detail-text">
                   <h4>Student Intern @ Steyp</h4>
-                  <p>Full-Stack & API Development (2023–2025)</p>
+                  <p>Full-Stack Development (2023–2025)</p>
                 </div>
               </div>
 

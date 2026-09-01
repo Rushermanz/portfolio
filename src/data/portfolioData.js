@@ -13,9 +13,7 @@ export const personalInfo = {
   linkedin: "https://linkedin.com/in/agniveshr",
   stats: [
     { label: "Hackathon Podiums", value: "2x", description: "2nd Place & Top 5 Finalist" },
-    { label: "Key Projects", value: "4+", description: "Web, Systems & Game Engines" },
-    { label: "Core Skills", value: "12", description: "Frontend, Backend & Tools" },
-    { label: "Internship", value: "2 Yrs", description: "Steyp Practical Immersion" }
+    { label: "Key Projects", value: "4+", description: "Web, Systems & Game Engines" }
   ]
 };
 
@@ -24,8 +22,8 @@ export const flagshipProject = {
   title: "Pixel Racer",
   subtitle: "2D Racing Game & Web Leaderboard Platform",
   type: "2D Game Engine & Web Architecture",
-  description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask, SQLite, and LAN networking.",
-  tech: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS", "LAN Networking"],
+  description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask and SQLite.",
+  tech: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS"],
   features: [
     { title: "Physics & Gameplay Mechanics", desc: "Vehicle inertia, rotation physics, collision detection, and dynamic camera system." },
     { title: "Smart Race Bots & Telemetry", desc: "Competitive AI opponents with pathfinding algorithms and real-time lap timers." },
@@ -117,13 +115,12 @@ export const projects = [
     category: "Game & Web Architecture",
     badge: "Flagship Project",
     shortDesc: "A top-down 2D racing game with custom physics engine, AI bots, and Flask web platform backend.",
-    description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask, SQLite, and LAN networking.",
-    tags: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS", "LAN Networking"],
+    description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask and SQLite.",
+    tags: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS"],
     highlights: [
       "Custom physics, vehicle handling, and collision detection engine",
       "Dynamic AI opponents with intelligent pathfinding",
-      "Flask backend for persistent player profiles and web leaderboards",
-      "Local Area Network (LAN) socket multiplayer support"
+      "Flask backend for persistent player profiles and web leaderboards"
     ],
     githubUrl: "https://github.com/rushermanz"
   },

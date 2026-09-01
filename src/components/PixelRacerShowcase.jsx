@@ -171,8 +171,8 @@ export default function PixelRacerShowcase() {
           </p>
         </div>
 
-        <div className="executive-card" style={{ padding: '36px' }}>
-          <div className="grid-2" style={{ gap: '36px', alignItems: 'center' }}>
+        <div className="executive-card" style={{ padding: '32px' }}>
+          <div className="grid-2" style={{ gap: '32px', alignItems: 'center' }}>
             {/* Left: Interactive Canvas */}
             <div>
               <div style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '16px' }}>
@@ -184,7 +184,7 @@ export default function PixelRacerShowcase() {
                   <span className="badge badge-blue">Python / Pygame</span>
                 </div>
 
-                <div className="canvas-container" style={{ background: '#0b0f19', height: '260px' }}>
+                <div className="canvas-container" style={{ background: '#0b0f19', height: '240px' }}>
                   <canvas ref={canvasRef} className="arcade-canvas" />
                   
                   <div className="canvas-overlay-hud">
@@ -197,7 +197,18 @@ export default function PixelRacerShowcase() {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {/* Clean, perfectly aligned physics badges row starting after KM/H */}
+                <div style={{
+                  marginTop: '10px',
+                  paddingTop: '8px',
+                  borderTop: '1px solid var(--border-color)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  gap: '8px',
+                  flexWrap: 'wrap',
+                  paddingLeft: '111px'
+                }}>
                   <span className="badge badge-slate">Inertia Physics</span>
                   <span className="badge badge-slate">Collision Engine</span>
                   <span className="badge badge-slate">AI Competitor</span>
@@ -213,20 +224,20 @@ export default function PixelRacerShowcase() {
                 ))}
               </div>
 
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '12px', color: 'var(--text-primary)' }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '10px', color: 'var(--text-primary)' }}>
                 Game Engine & Flask Web Architecture
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', lineHeight: '1.7', marginBottom: '20px' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '18px' }}>
                 Engineered with real-time physics calculations, custom vector math for vehicle rotations, and camera interpolation. Supported by a synchronized Flask web interface with SQLite persistence for recording best lap times and player metrics.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {flagshipProject.features.slice(0, 3).map((f, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: 'var(--bg-primary)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
-                    <Zap size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: 'var(--bg-primary)', padding: '10px 14px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
+                    <Zap size={16} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
                     <div>
-                      <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>{f.title}</h4>
-                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>{f.desc}</p>
+                      <h4 style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-primary)' }}>{f.title}</h4>
+                      <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{f.desc}</p>
                     </div>
                   </div>
                 ))}
