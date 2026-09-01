@@ -19,7 +19,7 @@ const LinkedinIcon = ({ size = 16, className }) => (
 
 export default function Hero() {
   return (
-    <section id="about" className="hero-section">
+    <section id="about" className="hero-section section">
       <div className="container">
         <div className="hero-grid">
           {/* Left Column: Headline & Bio */}
