@@ -1,192 +1,198 @@
 export const personalInfo = {
-  name: "Agnivesh",
+  name: "Agnivesh R",
+  title: "Full-Stack Developer & MCA Student",
   role: "Full-Stack Developer & Software Engineer",
-  tagline: "Building Practical Digital Products & Interactive Systems",
-  bio: "BCA student passionate about full-stack web technologies, game systems, and intelligent digital applications. Experienced in developing end-to-end applications with Python, React, Flask, and exploring modern AI architectures.",
+  tagline: "Building Practical Digital Products & Intelligent Systems",
+  bio: "MCA student and Full-Stack Developer focused on building practical software, web applications, and AI-powered solutions. Takes ideas from concept to implementation, designing frontends, developing backends, working with databases and APIs, and integrating intelligent features.",
+  status: "Open to Internships & Collaborative Opportunities",
   resumeUrl: "/resume.pdf",
-  email: "agnivesh.dev@example.com", // updateable by user
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  location: "India",
-  status: "Open to Internships & Full-Time Roles",
+  email: "agniveshr3@gmail.com",
+  phone: "+91 8304990602",
+  location: "Kochi, Kerala, India",
+  github: "https://github.com/rushermanz",
+  linkedin: "https://linkedin.com/in/agniveshr",
   stats: [
-    { label: "Hackathon Podiums", value: "2x", description: "Top 5 & 2nd Place Winner" },
-    { label: "Core Projects", value: "5+", description: "From Games to Full-Stack Web" },
-    { label: "Tech Stack", value: "12+", description: "Languages & Frameworks" },
-    { label: "Code Mastery", value: "100%", description: "Practical hands-on focus" }
+    { label: "Hackathon Podiums", value: "2x", description: "2nd Place & Top 5 Finalist" },
+    { label: "Key Projects", value: "4+", description: "Web, Systems & Game Engines" },
+    { label: "Core Skills", value: "12", description: "Frontend, Backend & Tools" },
+    { label: "Internship", value: "2 Yrs", description: "Steyp Practical Immersion" }
   ]
 };
 
 export const flagshipProject = {
   id: "pixel-racer",
   title: "Pixel Racer",
-  subtitle: "Pixel-Art 2D Racing Game & Web Platform",
-  type: "Flagship Game & Full-Stack System",
-  description: "An interactive top-down 2D racing game built with Python and Pygame, backed by a Flask web architecture for player profiles, dynamic track selection, and competitive real-time leaderboard functionality.",
-  tech: ["Python", "Pygame", "Flask", "SQLite", "REST APIs", "LAN / Sockets"],
+  subtitle: "2D Racing Game & Web Leaderboard Platform",
+  type: "2D Game Engine & Web Architecture",
+  description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask, SQLite, and LAN networking.",
+  tech: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS", "LAN Networking"],
   features: [
-    { title: "Physics & Camera Engine", desc: "Smooth vehicle inertia, realistic rotation, collision detection, and dynamic camera following." },
-    { title: "DRS Speed Zones & HUD", desc: "Interactive DRS boost zones, live speedometer HUD, minimap radar, and precise lap timers." },
-    { title: "Smart Race Bots", desc: "Competitive AI-driven bots with pathfinding and obstacle avoidance across multiple tracks." },
-    { title: "Web Platform & Leaderboard", desc: "Flask backend integrated with SQLite for persistent player profiles, track stats, and global rankings." },
-    { title: "Multiplayer Explorations", desc: "Local Area Network (LAN) & socket-based multiplayer testing." }
+    { title: "Physics & Gameplay Mechanics", desc: "Vehicle inertia, rotation physics, collision detection, and dynamic camera system." },
+    { title: "Smart Race Bots & Telemetry", desc: "Competitive AI opponents with pathfinding algorithms and real-time lap timers." },
+    { title: "Flask Web & Leaderboard Backend", desc: "Flask web platform with SQLite database for player profiles and global leaderboards." }
   ],
-  modes: ["Time Trial Mode", "Race Bots", "Custom Tracks", "Global Leaderboards"],
-  githubUrl: "https://github.com",
-  demoAvailable: true
+  githubUrl: "https://github.com/rushermanz"
 };
 
-export const projects = [
+export const experience = [
   {
-    id: "student-analyzer",
-    title: "Student Performance Analyzer",
-    category: "Data & Analytics",
-    badge: "Analytics",
-    shortDesc: "Data-driven platform for analyzing academic trends, performance metrics, and delivering actionable student insights.",
-    description: "A comprehensive data analysis system focused on processing student academic records. It visualizes performance distributions, tracks semester-over-semester progress trends, and calculates predictive insights for educators.",
-    tags: ["Python", "Streamlit", "Data Visualization", "Data Analysis", "SQLite"],
-    highlights: [
-      "Dynamic performance metrics & GPA calculations",
-      "Interactive charts for identifying subject-wise academic trends",
-      "Automated summary generation from historical student records"
-    ],
-    githubUrl: "https://github.com"
+    id: "steyp-intern",
+    role: "Student Intern",
+    company: "Steyp",
+    location: "Kochi, Kerala, India",
+    period: "Aug 2023 – Aug 2025",
+    type: "Internship",
+    bullets: [
+      "Architected hands-on experience in full-stack development, API integration, and Android application development through structured assignments and practical projects.",
+      "Built multiple applications, including a weather application using API integration and a footwear e-commerce web application.",
+      "Spearheaded participation in two hackathons, achieving a Top 5 finish in the first hackathon and 2nd place in the second, gaining practical experience in rapid development, teamwork, problem-solving, and presenting software solutions.",
+      "Completed multiple development assignments covering different aspects of application development and strengthened practical programming and software development skills."
+    ]
+  }
+];
+
+export const education = [
+  {
+    id: "mca",
+    degree: "Master of Computer Applications (MCA)",
+    field: "Computer Science",
+    institution: "MES ADVANCED INSTITUTE OF MANAGEMENT AND TECHNOLOGY",
+    location: "Marampally, Kochi",
+    period: "Aug 2025 – Mar 2027",
+    status: "Currently Pursuing"
   },
   {
-    id: "digital-ration",
-    title: "Digital Ration Shop / PDS System",
-    category: "System Design",
-    badge: "Civic Tech Concept",
-    shortDesc: "Modernizing the Public Distribution System (PDS) for radical transparency, quota tracking, and accessible civic services.",
-    description: "An early-stage architecture concept exploring how modern digital platforms can transform ration distribution. Features family account linking, transparent subsidy info, GPS shop locator, and senior citizen home delivery support.",
-    tags: ["System Design", "Python", "Full-Stack", "GPS Services", "Concept / WIP"],
-    highlights: [
-      "Online quota booking & real-time stock availability tracking",
-      "GPS-based nearest fair price shop locator",
-      "Aadhaar-based biometric concept & demand prediction algorithms",
-      "Dedicated delivery assistance support for senior citizens"
-    ],
-    githubUrl: "https://github.com"
-  },
-  {
-    id: "weather-app",
-    title: "Real-Time Weather Application",
-    category: "Full-Stack Web",
-    badge: "Web App",
-    shortDesc: "Asynchronous weather intelligence dashboard featuring real-time meteorological API integration and dynamic atmospheric UI.",
-    description: "A sleek, responsive frontend application built to master asynchronous data retrieval and clean API integration. Provides live weather metrics, multi-day forecasts, and dynamic visual states according to atmospheric conditions.",
-    tags: ["JavaScript", "React", "REST APIs", "Async/Await", "Dynamic CSS"],
-    highlights: [
-      "Real-time meteorological data querying via external REST APIs",
-      "Dynamic atmospheric theme adapting to sunrise, storms, or clear skies",
-      "Instant location search with client-side caching"
-    ],
-    githubUrl: "https://github.com"
-  },
-  {
-    id: "footwear-ecommerce",
-    title: "Footwear E-Commerce Web App",
-    category: "Full-Stack Web",
-    badge: "E-Commerce",
-    shortDesc: "High-conversion shopping experience featuring interactive product grids, category filtering, and shopping flow.",
-    description: "A modern e-commerce storefront created to practice modern UI/UX engineering, interactive product cards, responsive category filtering, and cart state management with fluid micro-interactions.",
-    tags: ["React", "JavaScript", "Responsive Design", "UI/UX Engineering", "CSS Modules"],
-    highlights: [
-      "Interactive product cards with live image galleries and hover depth",
-      "Category & price filtering with instant state updates",
-      "Mobile-first responsive shopping navigation"
-    ],
-    githubUrl: "https://github.com"
+    id: "bca",
+    degree: "Bachelor of Computer Applications (BCA)",
+    field: "Computer Science",
+    institution: "Bharata Mata College of Commerce and Arts",
+    location: "Choondy, Aluva",
+    period: "Aug 2022 – Mar 2025",
+    status: "Completed"
   }
 ];
 
 export const skillCategories = [
   {
-    category: "Programming Languages",
-    icon: "Code2",
-    skills: [
-      { name: "Python", level: "Advanced", icon: "🐍" },
-      { name: "JavaScript (ES6+)", level: "Advanced", icon: "⚡" },
-      { name: "Java", level: "Proficient", icon: "☕" },
-      { name: "C++", level: "Proficient", icon: "⚙️" },
-      { name: "PHP", level: "Intermediate", icon: "🐘" },
-      { name: "HTML5 / CSS3", level: "Advanced", icon: "🎨" }
-    ]
-  },
-  {
-    category: "Frameworks & Libraries",
-    icon: "Layers",
+    category: "Frontend Development",
+    icon: "Layout",
+    description: "Creating responsive, accessible, and dynamic user interfaces.",
     skills: [
       { name: "React", level: "Advanced", icon: "⚛️" },
-      { name: "Flask", level: "Advanced", icon: "🌶️" },
-      { name: "Django", level: "Proficient", icon: "🎸" },
-      { name: "Pygame", level: "Advanced", icon: "🎮" },
-      { name: "Streamlit", level: "Proficient", icon: "📊" },
-      { name: "React Native", level: "Learning / Building", icon: "📱" },
-      { name: "LangChain", level: "Exploring AI", icon: "🦜" }
+      { name: "JavaScript (ES6+)", level: "Advanced", icon: "⚡" },
+      { name: "HTML5", level: "Advanced", icon: "🎨" },
+      { name: "CSS3", level: "Advanced", icon: "🎯" }
     ]
   },
   {
-    category: "Databases & Backend",
-    icon: "Database",
+    category: "Backend Development",
+    icon: "Server",
+    description: "Developing robust APIs, server logic, and database schemas.",
     skills: [
-      { name: "SQLite", level: "Advanced", icon: "🗄️" },
-      { name: "REST APIs", level: "Advanced", icon: "🔌" },
-      { name: "API Integration", level: "Advanced", icon: "🔗" },
-      { name: "System Architecture", level: "Proficient", icon: "📐" }
+      { name: "Python", level: "Advanced", icon: "🐍" },
+      { name: "Node.js", level: "Proficient", icon: "🟢" },
+      { name: "APIs / RESTful Services", level: "Advanced", icon: "🔌" },
+      { name: "Supabase", level: "Proficient", icon: "⚡" },
+      { name: "Flask & SQLite", level: "Proficient", icon: "🗄️" }
     ]
   },
   {
-    category: "Tools & Workflow",
+    category: "Development Tools & Design",
     icon: "Wrench",
+    description: "Version control, workflow optimization, and UI/UX prototyping.",
     skills: [
-      { name: "Git & GitHub", level: "Advanced", icon: "🐙" },
-      { name: "VS Code", level: "Advanced", icon: "💻" },
-      { name: "Responsive Design", level: "Advanced", icon: "📱" },
-      { name: "Linux / CLI", level: "Proficient", icon: "🖥️" }
+      { name: "Git", level: "Advanced", icon: "📦" },
+      { name: "GitHub", level: "Advanced", icon: "🐙" },
+      { name: "Figma", level: "Proficient", icon: "❖" },
+      { name: "Canva", level: "Proficient", icon: "🖌️" }
     ]
+  }
+];
+
+export const projects = [
+  {
+    id: "pixel-racer",
+    title: "Pixel Racer",
+    subtitle: "2D Racing Game & Web Leaderboard System",
+    category: "Game & Web Architecture",
+    badge: "Flagship Project",
+    shortDesc: "A top-down 2D racing game with custom physics engine, AI bots, and Flask web platform backend.",
+    description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask, SQLite, and LAN networking.",
+    tags: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS", "LAN Networking"],
+    highlights: [
+      "Custom physics, vehicle handling, and collision detection engine",
+      "Dynamic AI opponents with intelligent pathfinding",
+      "Flask backend for persistent player profiles and web leaderboards",
+      "Local Area Network (LAN) socket multiplayer support"
+    ],
+    githubUrl: "https://github.com/rushermanz"
+  },
+  {
+    id: "digital-ration",
+    title: "Digital Ration Shop",
+    subtitle: "Public Distribution System (PDS) Platform",
+    category: "System Design",
+    badge: "Civic Tech Concept",
+    shortDesc: "Digital Public Distribution System architecture for stock tracking, transparent subsidy allocation, and senior citizen assistance.",
+    description: "Designed a digital Public Distribution System (PDS) concept to streamline ration booking, stock tracking, digital payments, beneficiary authentication, and subsidy information, with features focused on improving transparency, reducing queues, and making ration services more accessible to senior citizens.",
+    tags: ["System Design", "Python", "Web Platform", "Civic Tech", "Process Optimization"],
+    highlights: [
+      "Real-time quota tracking and transparent subsidy allocation",
+      "Queue-reduction algorithms and digital booking flows",
+      "Dedicated accessibility and home delivery features for senior citizens",
+      "Secure beneficiary authentication & digital payment framework"
+    ],
+    githubUrl: "https://github.com/rushermanz"
+  },
+  {
+    id: "weather-app",
+    title: "Real-Time Weather Application",
+    subtitle: "Asynchronous Meteorological Dashboard",
+    category: "Full-Stack Web App",
+    badge: "API Integration",
+    shortDesc: "Asynchronous web application providing live weather metrics, multi-day forecasts, and dynamic interface updates.",
+    description: "Built a responsive weather application during internship at Steyp, mastering asynchronous data fetching and REST API integration to deliver dynamic atmospheric visual themes and location weather analysis.",
+    tags: ["React", "JavaScript", "REST APIs", "Async/Await", "CSS3"],
+    highlights: [
+      "Asynchronous querying of global meteorological REST APIs",
+      "Instant city search with client-side caching and error handling",
+      "Dynamic weather UI state matching real-time atmospheric conditions"
+    ],
+    githubUrl: "https://github.com/rushermanz"
+  },
+  {
+    id: "footwear-ecommerce",
+    title: "Footwear E-Commerce Web App",
+    subtitle: "Interactive Shopping & Product Platform",
+    category: "E-Commerce Web App",
+    badge: "Web App",
+    shortDesc: "Interactive shopping platform featuring product catalog grids, dynamic category filtering, and shopping cart workflow.",
+    description: "Engineered a modern e-commerce storefront during internship at Steyp to practice clean UI component architecture, interactive product cards, responsive category filtering, and state management.",
+    tags: ["React", "JavaScript", "UI/UX Engineering", "CSS3"],
+    highlights: [
+      "Interactive product showcase grid with live category filters",
+      "Responsive shopping cart state management",
+      "Clean UI component design adhering to modern web standards"
+    ],
+    githubUrl: "https://github.com/rushermanz"
   }
 ];
 
 export const achievements = [
   {
     id: 1,
-    title: "🥈 2nd Place Winner — Hackathon",
+    title: "🥈 2nd Place Winner — Web It Up 4.0",
     category: "Hackathon Award",
-    date: "Recent Milestone",
-    description: "Competed in high-intensity hackathon sprint, engineering an innovative software solution under strict deadlines and securing 2nd place overall.",
-    badge: "Silver Award"
+    date: "Talrop / Steyp",
+    description: "Secured 2nd place overall in Web It Up 4.0 hackathon hosted by Talrop & Steyp, engineering and presenting an innovative full-stack software solution under tight sprint constraints.",
+    badge: "2nd Place Winner"
   },
   {
     id: 2,
-    title: "🏅 Top 5 Finish — First Hackathon",
+    title: "🏅 Top 5 Finalist — Web It Up 2.0",
     category: "Hackathon Debut",
-    date: "Milestone",
-    description: "Achieved a top 5 ranking in debut hackathon appearance against diverse collegiate and industry developer teams.",
+    date: "Talrop / Steyp",
+    description: "Achieved a Top 5 finalist ranking in debut hackathon appearance (Web It Up 2.0 hosted by Talrop & Steyp), demonstrating rapid prototyping, teamwork, and technical problem solving.",
     badge: "Top 5 Finalist"
-  },
-  {
-    id: 3,
-    title: "🎓 Full-Stack Development Practical Immersion",
-    category: "Technical Training",
-    date: "Continuous",
-    description: "Rigorous hands-on training spanning full-stack architectures, backend APIs, state management, and real-world software assignments.",
-    badge: "Practical Training"
-  },
-  {
-    id: 4,
-    title: "🚀 BCA Degree Program",
-    category: "Academic Foundation",
-    date: "Current Pursuit",
-    description: "Pursuing Bachelor of Computer Applications with specialized focus on software development, algorithms, databases, and digital system design.",
-    badge: "BCA Scholar"
   }
-];
-
-export const currentFocus = [
-  "Building full-stack web applications with Python/Django/Flask & React",
-  "Deepening knowledge in API design & asynchronous architecture",
-  "Experimenting with LangChain & Generative AI workflows",
-  "Cross-platform mobile application development with React Native",
-  "Advanced algorithmic problem solving and data structures"
 ];

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Gamepad2, Zap, Trophy, Flame, Play, RotateCcw, Cpu, Layers } from 'lucide-react';
+import { Gamepad2, Zap, Cpu } from 'lucide-react';
 import { flagshipProject } from '../data/portfolioData';
 
 export default function PixelRacerShowcase() {
@@ -7,7 +7,6 @@ export default function PixelRacerShowcase() {
   const [isDrsActive, setIsDrsActive] = useState(false);
   const [speed, setSpeed] = useState(0);
   const [lapTime, setLapTime] = useState("0:14.28");
-  const [autoDrive, setAutoDrive] = useState(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,7 +14,6 @@ export default function PixelRacerShowcase() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
 
-    // Track points (Oval circuit with chicanes)
     const trackPoints = [
       { x: 80, y: 70 },
       { x: 260, y: 50 },
@@ -33,8 +31,8 @@ export default function PixelRacerShowcase() {
     let currentSpeed = 160;
     let lapStart = Date.now();
 
-    const carColor = '#6366f1';
-    const botColor = '#f43f5e';
+    const carColor = '#2563eb';
+    const botColor = '#dc2626';
 
     const getTrackPos = (t) => {
       const n = trackPoints.length;
@@ -53,21 +51,18 @@ export default function PixelRacerShowcase() {
     };
 
     const render = () => {
-      // Resize canvas to actual container dimensions
       const width = (canvas.width = canvas.parentElement.clientWidth);
       const height = (canvas.height = canvas.parentElement.clientHeight);
 
-      // Scale factors
       const scaleX = width / 480;
       const scaleY = height / 280;
 
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Draw Asphalt Circuit
+      // Track background
       ctx.save();
       ctx.scale(scaleX, scaleY);
 
-      // Track Border / Run-off
       ctx.beginPath();
       ctx.moveTo(trackPoints[0].x, trackPoints[0].y);
       for (let i = 1; i < trackPoints.length; i++) {
@@ -77,31 +72,22 @@ export default function PixelRacerShowcase() {
 
       // Outer grass / curb
       ctx.lineWidth = 42;
-      ctx.strokeStyle = '#1e293b';
+      ctx.strokeStyle = '#e2e8f0';
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.stroke();
 
       // Asphalt surface
       ctx.lineWidth = 32;
-      ctx.strokeStyle = '#0f172a';
+      ctx.strokeStyle = '#1e293b';
       ctx.stroke();
 
       // Centerline dashes
       ctx.setLineDash([8, 12]);
       ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
       ctx.stroke();
       ctx.setLineDash([]);
-
-      // 2. DRS Zone (Along top straight x: 100 to 300)
-      ctx.beginPath();
-      ctx.moveTo(trackPoints[0].x, trackPoints[0].y);
-      ctx.lineTo(trackPoints[1].x, trackPoints[1].y);
-      ctx.lineTo(trackPoints[2].x, trackPoints[2].y);
-      ctx.lineWidth = 30;
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.18)';
-      ctx.stroke();
 
       // Finish line
       ctx.beginPath();
@@ -111,7 +97,7 @@ export default function PixelRacerShowcase() {
       ctx.strokeStyle = '#ffffff';
       ctx.stroke();
 
-      // 3. Update Positions
+      // Positions update
       const inDrsZone = progress > 0.05 && progress < 0.35;
       setIsDrsActive(inDrsZone);
 
@@ -128,11 +114,10 @@ export default function PixelRacerShowcase() {
       botProgress += (160 / 100000);
       if (botProgress >= 1) botProgress = 0;
 
-      // Update Lap Timer
       const elapsed = ((Date.now() - lapStart) / 1000).toFixed(2);
       setLapTime(`0:${elapsed < 10 ? '0' + elapsed : elapsed}`);
 
-      // 4. Draw Bot Car
+      // Draw Bot Car
       const botPos = getTrackPos(botProgress);
       ctx.save();
       ctx.translate(botPos.x, botPos.y);
@@ -143,33 +128,17 @@ export default function PixelRacerShowcase() {
       ctx.fillRect(4, -3, 4, 6);
       ctx.restore();
 
-      // 5. Draw Player Car (with glow trail)
+      // Draw Player Car
       const playerPos = getTrackPos(progress);
       ctx.save();
       ctx.translate(playerPos.x, playerPos.y);
       ctx.rotate(playerPos.angle);
 
-      // DRS Boost Flame/Trail
-      if (inDrsZone) {
-        ctx.fillStyle = 'rgba(6, 182, 212, 0.8)';
-        ctx.beginPath();
-        ctx.moveTo(-12, -3);
-        ctx.lineTo(-24, 0);
-        ctx.lineTo(-12, 3);
-        ctx.fill();
-      }
-
-      // Car Body
       ctx.fillStyle = carColor;
-      ctx.shadowColor = inDrsZone ? '#06b6d4' : '#6366f1';
-      ctx.shadowBlur = inDrsZone ? 16 : 8;
       ctx.fillRect(-11, -6, 22, 12);
-      ctx.shadowBlur = 0;
 
-      // Windshield & Wheels
-      ctx.fillStyle = '#0f172a';
-      ctx.fillRect(2, -4, 5, 8);
       ctx.fillStyle = '#ffffff';
+      ctx.fillRect(2, -4, 5, 8);
       ctx.fillRect(8, -5, 2, 2);
       ctx.fillRect(8, 3, 2, 2);
       ctx.restore();
@@ -184,7 +153,7 @@ export default function PixelRacerShowcase() {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [autoDrive]);
+  }, []);
 
   return (
     <section id="flagship" className="section">
@@ -192,102 +161,75 @@ export default function PixelRacerShowcase() {
         <div className="section-header">
           <div className="section-tag">
             <Gamepad2 size={16} />
-            <span>Featured Flagship Project</span>
+            <span>Featured Flagship System</span>
           </div>
           <h2 className="section-title">
-            <span className="gradient-text">Pixel Racer</span> 2D Engine & Platform
+            <span className="accent-text">Pixel Racer</span> 2D Engine & Web Platform
           </h2>
           <p className="section-subtitle">
-            An interactive top-down 2D racing game built with Python and Pygame, backed by a Flask web architecture for player profiles and global leaderboards.
+            An interactive 2D racing game engine built with Python and Pygame, backed by a Flask backend for persistent player profiles and web leaderboards.
           </p>
         </div>
 
-        <div className="flagship-wrapper">
-          <div className="flagship-grid">
-            {/* Left: Interactive Game Simulator */}
+        <div className="executive-card" style={{ padding: '36px' }}>
+          <div className="grid-2" style={{ gap: '36px', alignItems: 'center' }}>
+            {/* Left: Interactive Canvas */}
             <div>
-              <div className="arcade-screen-card">
-                <div className="arcade-screen-header">
-                  <div className="arcade-hud-status">
+              <div style={{ background: '#f8fafc', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span className="hero-status-dot"></span>
-                    <span>Pygame 2D Simulation Preview</span>
+                    Pygame Engine Simulation
                   </div>
-                  <span className="badge badge-indigo">Python / Pygame</span>
+                  <span className="badge badge-blue">Python / Pygame</span>
                 </div>
 
-                <div className="canvas-container">
+                <div className="canvas-container" style={{ background: '#0f172a', height: '260px' }}>
                   <canvas ref={canvasRef} className="arcade-canvas" />
                   
-                  {/* HUD Overlay */}
                   <div className="canvas-overlay-hud">
-                    <div className="hud-speedometer">
-                      ⚡ {speed} <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>KM/H</span>
+                    <div className="hud-speedometer" style={{ background: '#0f172a', border: '1px solid #334155', color: '#fff' }}>
+                      ⚡ {speed} KM/H
                     </div>
-
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                      {isDrsActive && (
-                        <div className="hud-drs-badge">
-                          DRS ACTIVE 🚀
-                        </div>
-                      )}
-                      <div className="hud-speedometer" style={{ borderColor: 'var(--primary-light)' }}>
-                        LAP {lapTime}
-                      </div>
+                    <div className="hud-speedometer" style={{ background: '#0f172a', border: '1px solid #334155', color: '#fff' }}>
+                      LAP {lapTime}
                     </div>
                   </div>
                 </div>
 
-                <div className="arcade-controls-bar">
-                  <div className="arcade-control-hint">
-                    <span>Physics:</span>
-                    <span className="key-badge">Inertia</span>
-                    <span className="key-badge">Collisions</span>
-                    <span className="key-badge">Camera Follow</span>
-                  </div>
-                  <div className="arcade-control-hint">
-                    <span className="key-badge" style={{ color: 'var(--accent-cyan)' }}>AI Bot Enabled</span>
-                  </div>
+                <div style={{ marginTop: '12px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <span className="badge badge-slate">Inertia Physics</span>
+                  <span className="badge badge-slate">Collision Engine</span>
+                  <span className="badge badge-slate">AI Competitor</span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Technical Architecture & Specs */}
+            {/* Right: Technical Features */}
             <div>
               <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
                 {flagshipProject.tech.map((t) => (
-                  <span key={t} className="badge badge-cyan">{t}</span>
+                  <span key={t} className="badge badge-blue">{t}</span>
                 ))}
               </div>
 
-              <h3 style={{ fontSize: '1.6rem', marginBottom: '12px' }}>
-                Complete Game Engine & Web Ecosystem
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '12px', color: 'var(--text-primary)' }}>
+                Game Engine & Flask Web Architecture
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7' }}>
-                Engineered with real-time physics calculations, custom vector math for vehicle rotations, and smooth camera interpolation. Supported by a synchronized Flask web interface with SQLite persistence for recording best lap times and player metrics.
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.94rem', lineHeight: '1.7', marginBottom: '20px' }}>
+                Engineered with real-time physics calculations, custom vector math for vehicle rotations, and camera interpolation. Supported by a synchronized Flask web interface with SQLite persistence for recording best lap times and player metrics.
               </p>
 
-              {/* Core Features List */}
-              <div className="flagship-features-list">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {flagshipProject.features.slice(0, 3).map((f, i) => (
-                  <div key={i} className="feature-item">
-                    <Zap size={18} className="feature-icon" />
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', background: 'var(--bg-primary)', padding: '12px 16px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)' }}>
+                    <Zap size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
                     <div>
-                      <h4>{f.title}</h4>
-                      <p>{f.desc}</p>
+                      <h4 style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>{f.title}</h4>
+                      <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>{f.desc}</p>
                     </div>
                   </div>
                 ))}
-              </div>
-
-              <div style={{ display: 'flex', gap: '14px', marginTop: '20px' }}>
-                <a
-                  href="#projects"
-                  className="btn btn-primary"
-                  style={{ padding: '10px 22px', fontSize: '0.9rem' }}
-                >
-                  <Cpu size={16} />
-                  <span>View All Projects</span>
-                </a>
               </div>
             </div>
           </div>

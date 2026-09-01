@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileText, Terminal } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'About', href: '#about' },
-    { label: 'Pixel Racer', href: '#flagship' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Achievements', href: '#achievements' },
@@ -27,8 +27,8 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <a href="#about" className="navbar-logo">
-          <div className="navbar-logo-badge">A</div>
-          <span>{personalInfo.name}<span style={{ color: 'var(--accent-cyan)' }}>.dev</span></span>
+          <div className="navbar-logo-badge">AR</div>
+          <span>{personalInfo.name}</span>
         </a>
 
         {/* Desktop Nav */}
@@ -49,7 +49,7 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             className="btn btn-secondary"
-            style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+            style={{ padding: '8px 18px', fontSize: '0.88rem' }}
           >
             <FileText size={16} />
             <span>Resume</span>
@@ -85,7 +85,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(false)}
           >
             <FileText size={16} />
-            <span>Download Resume PDF</span>
+            <span>Download Resume (PDF)</span>
           </a>
         </div>
       )}
