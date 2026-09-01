@@ -614,8 +614,9 @@
 
 /* ================= CONTACT ================= */
 #contact {
-  padding-bottom: 80px;
-  min-height: calc(100vh - 120px);
+  padding-top: 12px;
+  padding-bottom: 58px;
+  min-height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -738,7 +739,7 @@
 .footer {
   background: #0b0f19;
   border-top: 1px solid var(--border-color);
-  padding: 24px 0;
+  padding: 24px 0 36px 0;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.84rem;
