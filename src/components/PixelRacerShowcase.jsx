@@ -197,7 +197,7 @@ export default function PixelRacerShowcase() {
                   </div>
                 </div>
 
-                {/* Clean, perfectly aligned physics badges row starting after KM/H */}
+                {/* Clean, perfectly aligned physics badges row */}
                 <div style={{
                   marginTop: '10px',
                   paddingTop: '8px',
@@ -206,8 +206,7 @@ export default function PixelRacerShowcase() {
                   alignItems: 'center',
                   justifyContent: 'flex-start',
                   gap: '8px',
-                  flexWrap: 'wrap',
-                  paddingLeft: '111px'
+                  flexWrap: 'wrap'
                 }}>
                   <span className="badge badge-slate">Inertia Physics</span>
                   <span className="badge badge-slate">Collision Engine</span>

@@ -14,6 +14,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileOpen]);
+
   const navItems = [
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
@@ -48,7 +58,7 @@ export default function Navbar() {
             href={personalInfo.resumeUrl}
             target="_blank"
             rel="noreferrer"
-            className="btn btn-secondary"
+            className="btn btn-secondary nav-resume-btn"
             style={{ padding: '8px 18px', fontSize: '0.88rem' }}
           >
             <FileText size={16} />
@@ -58,6 +68,7 @@ export default function Navbar() {
             className="mobile-menu-btn"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Navigation Menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>

@@ -68,7 +68,7 @@ export default function Projects() {
         <div className="projects-scroll-wrapper">
           {/* Top Right Scroll Controls */}
           <div className="projects-controls">
-            <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, marginRight: 'auto' }}>
+            <span className="projects-scroll-hint" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, marginRight: 'auto' }}>
               ← Scroll horizontally to view all 4 projects →
             </span>
             <button
