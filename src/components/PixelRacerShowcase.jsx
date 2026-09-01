@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Gamepad2, Zap, Cpu } from 'lucide-react';
+import { Gamepad2, Zap } from 'lucide-react';
 import { flagshipProject } from '../data/portfolioData';
 
 export default function PixelRacerShowcase() {
@@ -31,8 +31,8 @@ export default function PixelRacerShowcase() {
     let currentSpeed = 160;
     let lapStart = Date.now();
 
-    const carColor = '#2563eb';
-    const botColor = '#dc2626';
+    const carColor = '#3b82f6';
+    const botColor = '#ef4444';
 
     const getTrackPos = (t) => {
       const n = trackPoints.length;
@@ -72,20 +72,20 @@ export default function PixelRacerShowcase() {
 
       // Outer grass / curb
       ctx.lineWidth = 42;
-      ctx.strokeStyle = '#e2e8f0';
+      ctx.strokeStyle = '#1e293b';
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.stroke();
 
       // Asphalt surface
       ctx.lineWidth = 32;
-      ctx.strokeStyle = '#1e293b';
+      ctx.strokeStyle = '#0f172a';
       ctx.stroke();
 
       // Centerline dashes
       ctx.setLineDash([8, 12]);
       ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
       ctx.stroke();
       ctx.setLineDash([]);
 
@@ -175,7 +175,7 @@ export default function PixelRacerShowcase() {
           <div className="grid-2" style={{ gap: '36px', alignItems: 'center' }}>
             {/* Left: Interactive Canvas */}
             <div>
-              <div style={{ background: '#f8fafc', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '16px' }}>
+              <div style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-color)', borderRadius: 'var(--radius-lg)', padding: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
                   <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span className="hero-status-dot"></span>
@@ -184,7 +184,7 @@ export default function PixelRacerShowcase() {
                   <span className="badge badge-blue">Python / Pygame</span>
                 </div>
 
-                <div className="canvas-container" style={{ background: '#0f172a', height: '260px' }}>
+                <div className="canvas-container" style={{ background: '#0b0f19', height: '260px' }}>
                   <canvas ref={canvasRef} className="arcade-canvas" />
                   
                   <div className="canvas-overlay-hud">
