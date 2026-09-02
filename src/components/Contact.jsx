@@ -39,7 +39,7 @@ export default function Contact() {
 
     try {
       // NOTE: Replace with the Web3Forms access key generated for agniveshr3@gmail.com at https://web3forms.com
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "c632d6df-eee6-42b4-a8b3-37ab3434f0d6";
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "acb23924-beaf-4385-8e7f-f40e3e2b024b";
 
       const payload = {
         access_key: accessKey,
