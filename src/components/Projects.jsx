@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useCallback, useMemo } from 'react';
 import { Layers, Gamepad2, Landmark, CloudRain, ShoppingBag, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '../data/portfolioData';
 
@@ -9,28 +9,135 @@ const GithubIcon = ({ size = 14 }) => (
   </svg>
 );
 
+const COPIES = 5;
+const MIDDLE_COPY_INDEX = 2; // Middle index: 0, 1, [2], 3, 4
+
 export default function Projects() {
   const scrollRef = useRef(null);
+  const isNormalizingRef = useRef(false);
+  const scrollEndTimerRef = useRef(null);
+
+  // Duplicate the projects array across 5 copies for seamless infinite scrolling
+  const displayProjects = useMemo(() => {
+    if (!projects || projects.length === 0) return [];
+    return Array.from({ length: COPIES }).flatMap((_, copyIndex) =>
+      projects.map((project) => ({
+        ...project,
+        uniqueKey: `copy-${copyIndex}-${project.id}`,
+      }))
+    );
+  }, []);
+
+  const getStep = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container || container.children.length < 2) return 464;
+    const card0 = container.children[0];
+    const card1 = container.children[1];
+    const diff = card1.offsetLeft - card0.offsetLeft;
+    return diff > 50 ? diff : card0.offsetWidth + 24;
+  }, []);
+
+  const getSetWidth = useCallback(() => {
+    if (!projects || projects.length === 0) return 0;
+    return getStep() * projects.length;
+  }, [getStep]);
+
+  // Keep scroll position within the middle copy range seamlessly
+  const normalizeScrollPosition = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container || !projects || projects.length === 0) return;
+
+    const setWidth = getSetWidth();
+    if (setWidth <= 0) return;
+
+    const currentScroll = container.scrollLeft;
+    const middleStart = setWidth * MIDDLE_COPY_INDEX;
+    const middleEnd = setWidth * (MIDDLE_COPY_INDEX + 1);
+
+    // Scrolled past the middle copy into copy 3 or 4
+    if (currentScroll >= middleEnd) {
+      isNormalizingRef.current = true;
+      const setsToShift = Math.floor((currentScroll - middleStart) / setWidth);
+      container.style.scrollBehavior = 'auto';
+      container.scrollLeft = currentScroll - (setsToShift * setWidth);
+      requestAnimationFrame(() => {
+        container.style.scrollBehavior = '';
+        isNormalizingRef.current = false;
+      });
+    }
+    // Scrolled before the middle copy into copy 0 or 1
+    else if (currentScroll < middleStart) {
+      isNormalizingRef.current = true;
+      const setsToShift = Math.ceil((middleStart - currentScroll) / setWidth);
+      container.style.scrollBehavior = 'auto';
+      container.scrollLeft = currentScroll + (setsToShift * setWidth);
+      requestAnimationFrame(() => {
+        container.style.scrollBehavior = '';
+        isNormalizingRef.current = false;
+      });
+    }
+  }, [getSetWidth]);
+
+  // Initialize scroll position to the middle copy on mount and resize
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container || !projects || projects.length === 0) return;
+
+    const initPosition = () => {
+      const setWidth = getSetWidth();
+      if (setWidth > 0) {
+        container.style.scrollBehavior = 'auto';
+        container.scrollLeft = setWidth * MIDDLE_COPY_INDEX;
+        requestAnimationFrame(() => {
+          container.style.scrollBehavior = '';
+        });
+      }
+    };
+
+    const frameId = requestAnimationFrame(initPosition);
+    window.addEventListener('resize', initPosition);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('resize', initPosition);
+    };
+  }, [getSetWidth]);
+
+  // Listen for scroll end to seamlessly normalize position without interrupting smooth animation
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScrollEnd = () => {
+      normalizeScrollPosition();
+    };
+
+    const handleScroll = () => {
+      if (isNormalizingRef.current) return;
+      clearTimeout(scrollEndTimerRef.current);
+      scrollEndTimerRef.current = setTimeout(handleScrollEnd, 150);
+    };
+
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    container.addEventListener('scrollend', handleScrollEnd, { passive: true });
+
+    return () => {
+      clearTimeout(scrollEndTimerRef.current);
+      container.removeEventListener('scroll', handleScroll);
+      container.removeEventListener('scrollend', handleScrollEnd);
+    };
+  }, [normalizeScrollPosition]);
 
   const scroll = (direction) => {
     if (!scrollRef.current) return;
     const container = scrollRef.current;
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    const maxScroll = scrollWidth - clientWidth;
-    const cardStep = 460;
+    const step = getStep();
 
+    container.style.scrollBehavior = 'smooth';
     if (direction === 'right') {
-      if (scrollLeft >= maxScroll - 30) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: cardStep, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: step });
     } else {
-      if (scrollLeft <= 30) {
-        container.scrollTo({ left: maxScroll, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: -cardStep, behavior: 'smooth' });
-      }
+      container.scrollBy({ left: -step });
     }
   };
 
@@ -50,7 +157,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="section section-alt">
+    <section id="projects" className="section section-alt section-visible">
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">
@@ -81,8 +188,8 @@ export default function Projects() {
 
           {/* Horizontal Scrolling Cards Container */}
           <div ref={scrollRef} className="projects-scroll-container">
-            {projects.map((project) => (
-              <div key={project.id} className="project-card project-card-horizontal">
+            {displayProjects.map((project) => (
+              <div key={project.uniqueKey} className="project-card project-card-horizontal">
                 <div>
                   <div className="project-card-header">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
