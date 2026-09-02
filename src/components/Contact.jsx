@@ -20,7 +20,9 @@ const LinkedinIcon = ({ size = 16 }) => (
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const copyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -28,15 +30,51 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      // NOTE: Replace with the Web3Forms access key generated for agniveshr3@gmail.com at https://web3forms.com
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "c632d6df-eee6-42b4-a8b3-37ab3434f0d6";
+
+      const payload = {
+        access_key: accessKey,
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        subject: `New Portfolio Message from ${formData.name}`,
+        from_name: formData.name,
+      };
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const res = await response.json();
+
+      if (res.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        setErrorMessage(res.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setErrorMessage("Unable to send message right now. Please email directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,7 +191,7 @@ export default function Contact() {
                 </div>
                 <h3 style={{ fontSize: '1.3rem', marginBottom: '8px', color: 'var(--text-primary)' }}>Message Sent Successfully!</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem' }}>
-                  Thank you for reaching out, {formData.name}. I'll get back to you as soon as possible.
+                  Thank you for reaching out! Your message has been delivered to my inbox. I'll get back to you as soon as possible.
                 </p>
               </div>
             ) : (
@@ -162,6 +200,7 @@ export default function Contact() {
                   <label className="form-label" htmlFor="name">Your Name</label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
                     required
                     placeholder="Enter your name"
@@ -175,6 +214,7 @@ export default function Contact() {
                   <label className="form-label" htmlFor="email">Your Email</label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
                     required
                     placeholder="name@example.com"
@@ -188,17 +228,39 @@ export default function Contact() {
                   <label className="form-label" htmlFor="message">Message</label>
                   <textarea
                     id="message"
+                    name="message"
                     required
-                    placeholder="Hi Agnivesh R, I'd like to discuss a project..."
+                    rows="6"
+                    placeholder="Write your message here..."
                     className="form-textarea"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
+                {errorMessage && (
+                  <div style={{
+                    padding: '10px 14px',
+                    borderRadius: 'var(--radius-md)',
+                    background: 'rgba(239, 68, 68, 0.1)',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                    color: '#ef4444',
+                    fontSize: '0.86rem',
+                    marginBottom: '16px',
+                    textAlign: 'center'
+                  }}>
+                    {errorMessage}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: '100%' }}
+                  disabled={isSubmitting}
+                >
                   <Send size={16} />
-                  <span>Send Message</span>
+                  <span>{isSubmitting ? "Sending Message..." : "Send Message"}</span>
                 </button>
               </form>
             )}
