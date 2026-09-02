@@ -72,20 +72,20 @@ export default function PixelRacerShowcase() {
 
       // Outer grass / curb
       ctx.lineWidth = 42;
-      ctx.strokeStyle = '#1e293b';
+      ctx.strokeStyle = '#334155';
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
       ctx.stroke();
 
       // Asphalt surface
       ctx.lineWidth = 32;
-      ctx.strokeStyle = '#0f172a';
+      ctx.strokeStyle = '#1e293b';
       ctx.stroke();
 
       // Centerline dashes
       ctx.setLineDash([8, 12]);
       ctx.lineWidth = 2;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
       ctx.stroke();
       ctx.setLineDash([]);
 
@@ -184,14 +184,14 @@ export default function PixelRacerShowcase() {
                   <span className="badge badge-blue">Python / Pygame</span>
                 </div>
 
-                <div className="canvas-container" style={{ background: '#0b0f19', height: '240px' }}>
+                <div className="canvas-container" style={{ background: 'var(--bg-secondary)', height: '240px' }}>
                   <canvas ref={canvasRef} className="arcade-canvas" />
                   
                   <div className="canvas-overlay-hud">
-                    <div className="hud-speedometer" style={{ background: '#0f172a', border: '1px solid #334155', color: '#fff' }}>
+                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
                       ⚡ {speed} KM/H
                     </div>
-                    <div className="hud-speedometer" style={{ background: '#0f172a', border: '1px solid #334155', color: '#fff' }}>
+                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
                       LAP {lapTime}
                     </div>
                   </div>

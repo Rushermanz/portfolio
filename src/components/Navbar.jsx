@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileText } from 'lucide-react';
+import { Menu, X, FileText, Sun, Moon } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('portfolio_theme') || 'light';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +66,15 @@ export default function Navbar() {
 
         {/* Right CTA */}
         <div className="nav-cta">
+          <button
+            className="btn btn-secondary theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            style={{ padding: '8px 12px', minHeight: '38px', borderRadius: 'var(--radius-md)' }}
+          >
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
           <a
             href={personalInfo.resumeUrl}
             target="_blank"
@@ -88,6 +109,16 @@ export default function Navbar() {
               {item.label}
             </a>
           ))}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <button
+              className="btn btn-secondary"
+              onClick={toggleTheme}
+              style={{ flex: 1 }}
+            >
+              {theme === 'light' ? <Moon size={16} /> : <Sun size={16} />}
+              <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+            </button>
+          </div>
           <a
             href={personalInfo.resumeUrl}
             target="_blank"
@@ -103,3 +134,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
