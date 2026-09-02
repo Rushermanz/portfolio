@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Download, Mail, Phone, MapPin, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { ArrowRight, Download, Mail, Phone, MapPin, GraduationCap, Award, FolderGit2 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 const GithubIcon = ({ size = 16, className }) => (
@@ -42,8 +42,8 @@ export default function Hero() {
             </p>
 
             <div className="hero-actions">
-              <a href="#experience" className="btn btn-primary">
-                <span>View Experience & Work</span>
+              <a href="#projects" className="btn btn-primary">
+                <span>View Projects</span>
                 <ArrowRight size={18} />
               </a>
 
@@ -82,25 +82,12 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Quick Stats Strip */}
-            <div className="stats-bar">
-              {personalInfo.stats.map((stat, i) => (
-                <div key={i} className="stat-item">
-                  <span className="stat-value">{stat.value}</span>
-                  <span className="stat-label">{stat.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right Column: Executive Profile Overview Card */}
           <div className="hero-profile-card">
             <div className="profile-card-header">
-              <div className="profile-avatar">AR</div>
-              <div className="profile-info">
-                <h3>{personalInfo.name}</h3>
-                <p>Full-Stack Engineer & MCA Student</p>
-              </div>
+              <img src="/profile.jpg" alt={personalInfo.name} className="profile-avatar-img" />
             </div>
 
             <div className="profile-key-details">
@@ -113,18 +100,9 @@ export default function Hero() {
               </div>
 
               <div className="key-detail-row">
-                <Briefcase size={20} className="key-detail-icon" />
+                <FolderGit2 size={20} className="key-detail-icon" />
                 <div className="key-detail-text">
-                  <h4>Student Intern @ Steyp</h4>
-                  <p>Full-Stack Development (2023–2025)</p>
-                </div>
-              </div>
-
-              <div className="key-detail-row">
-                <GraduationCap size={20} className="key-detail-icon" />
-                <div className="key-detail-text">
-                  <h4>Bachelor of Computer Applications (BCA)</h4>
-                  <p>Bharata Mata College of Commerce & Arts (2022–2025)</p>
+                  <h4>4+ Key Projects</h4>
                 </div>
               </div>
 
@@ -132,7 +110,6 @@ export default function Hero() {
                 <Award size={20} className="key-detail-icon" />
                 <div className="key-detail-text">
                   <h4>2x Hackathon Podiums</h4>
-                  <p>Web It Up 4.0 (2nd Place) & Web It Up 2.0 (Top 5 Finalist)</p>
                 </div>
               </div>
             </div>

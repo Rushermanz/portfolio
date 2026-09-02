@@ -20,16 +20,11 @@ export default function Skills() {
     <section id="skills" className="section">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <Code2 size={16} />
-            <span>Technical Toolkit</span>
-          </div>
+
           <h2 className="section-title">
             Skills & <span className="accent-text">Technologies</span>
           </h2>
-          <p className="section-subtitle">
-            Core tech stack and tools mastered through application development, internship assignments, and hackathons.
-          </p>
+
         </div>
 
         <div className="grid-3" style={{ gap: '28px' }}>

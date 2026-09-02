@@ -113,7 +113,7 @@ export const projects = [
     title: "Pixel Racer",
     subtitle: "2D Racing Game & Web Leaderboard System",
     category: "Game & Web Architecture",
-    badge: "Flagship Project",
+    badge: "Game Development",
     shortDesc: "A top-down 2D racing game with custom physics engine, AI bots, and Flask web platform backend.",
     description: "Created a top-down 2D racing game using Python and Pygame, implementing core gameplay systems, AI opponents, race modes, and player progression features backed by Flask and SQLite.",
     tags: ["Python", "Pygame", "Flask", "SQLite", "JavaScript", "HTML/CSS"],
@@ -124,23 +124,23 @@ export const projects = [
     ],
     githubUrl: "https://github.com/rushermanz"
   },
-  {
-    id: "digital-ration",
-    title: "Digital Ration Shop",
-    subtitle: "Public Distribution System (PDS) Platform",
-    category: "System Design",
-    badge: "Civic Tech Concept",
-    shortDesc: "Digital Public Distribution System architecture for stock tracking, transparent subsidy allocation, and senior citizen assistance.",
-    description: "Designed a digital Public Distribution System (PDS) concept to streamline ration booking, stock tracking, digital payments, beneficiary authentication, and subsidy information, with features focused on improving transparency, reducing queues, and making ration services more accessible to senior citizens.",
-    tags: ["System Design", "Python", "Web Platform", "Civic Tech", "Process Optimization"],
-    highlights: [
-      "Real-time quota tracking and transparent subsidy allocation",
-      "Queue-reduction algorithms and digital booking flows",
-      "Dedicated accessibility and home delivery features for senior citizens",
-      "Secure beneficiary authentication & digital payment framework"
-    ],
-    githubUrl: "https://github.com/rushermanz"
-  },
+  // {
+  //   id: "digital-ration",
+  //   title: "Digital Ration Shop",
+  //   subtitle: "Public Distribution System (PDS) Platform",
+  //   category: "System Design",
+  //   badge: "Civic Tech Concept",
+  //   shortDesc: "Digital Public Distribution System architecture for stock tracking, transparent subsidy allocation, and senior citizen assistance.",
+  //   description: "Designed a digital Public Distribution System (PDS) concept to streamline ration booking, stock tracking, digital payments, beneficiary authentication, and subsidy information, with features focused on improving transparency, reducing queues, and making ration services more accessible to senior citizens.",
+  //   tags: ["System Design", "Python", "Web Platform", "Civic Tech", "Process Optimization"],
+  //   highlights: [
+  //     "Real-time quota tracking and transparent subsidy allocation",
+  //     "Queue-reduction algorithms and digital booking flows",
+  //     "Dedicated accessibility and home delivery features for senior citizens",
+  //     "Secure beneficiary authentication & digital payment framework"
+  //   ],
+  //   githubUrl: "https://github.com/rushermanz"
+  // },
   {
     id: "weather-app",
     title: "Real-Time Weather Application",

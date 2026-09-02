@@ -38,7 +38,6 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Achievements', href: '#achievements' },

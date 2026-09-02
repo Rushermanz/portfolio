@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Experience from './components/Experience';
 import PixelRacerShowcase from './components/PixelRacerShowcase';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -33,7 +32,6 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <Experience />
         <PixelRacerShowcase />
         <Projects />
         <Skills />

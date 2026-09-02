@@ -53,24 +53,14 @@ export default function Projects() {
     <section id="projects" className="section section-alt">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <Layers size={16} />
-            <span>Featured Software Engineering Projects</span>
-          </div>
           <h2 className="section-title">
             Featured <span className="accent-text">Projects & Systems</span>
           </h2>
-          <p className="section-subtitle">
-            Applications, full-stack architectures, concepts, and interactive software developed by Agnivesh R.
-          </p>
         </div>
 
         <div className="projects-scroll-wrapper">
           {/* Top Right Scroll Controls */}
           <div className="projects-controls">
-            <span className="projects-scroll-hint" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, marginRight: 'auto' }}>
-              ← Scroll horizontally to view all 4 projects →
-            </span>
             <button
               onClick={() => scroll('left')}
               className="scroll-ctrl-btn"

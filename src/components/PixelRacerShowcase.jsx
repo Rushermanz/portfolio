@@ -39,10 +39,10 @@ export default function PixelRacerShowcase() {
       const index = Math.floor(t * n) % n;
       const nextIndex = (index + 1) % n;
       const subT = (t * n) % 1;
-      
+
       const p1 = trackPoints[index];
       const p2 = trackPoints[nextIndex];
-      
+
       return {
         x: p1.x + (p2.x - p1.x) * subT,
         y: p1.y + (p2.y - p1.y) * subT,
@@ -161,7 +161,7 @@ export default function PixelRacerShowcase() {
         <div className="section-header">
           <div className="section-tag">
             <Gamepad2 size={16} />
-            <span>Featured Flagship System</span>
+            <span>Featured System</span>
           </div>
           <h2 className="section-title">
             <span className="accent-text">Pixel Racer</span> 2D Engine & Web Platform
@@ -186,18 +186,18 @@ export default function PixelRacerShowcase() {
 
                 <div className="canvas-container" style={{ background: 'var(--bg-secondary)', height: '240px' }}>
                   <canvas ref={canvasRef} className="arcade-canvas" />
-                  
+
                   <div className="canvas-overlay-hud">
                     <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
                       ⚡ {speed} KM/H
                     </div>
-                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
+                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', paddingLeft: '20px' }}>
                       LAP {lapTime}
                     </div>
                   </div>
                 </div>
 
-                {/* Clean, perfectly aligned physics badges row */}
+                {/* Clean, perfectly aligned physics badges row starting after KM/H */}
                 <div style={{
                   marginTop: '10px',
                   paddingTop: '8px',
@@ -206,7 +206,8 @@ export default function PixelRacerShowcase() {
                   alignItems: 'center',
                   justifyContent: 'flex-start',
                   gap: '8px',
-                  flexWrap: 'wrap'
+                  flexWrap: 'wrap',
+                  paddingLeft: '140px'
                 }}>
                   <span className="badge badge-slate">Inertia Physics</span>
                   <span className="badge badge-slate">Collision Engine</span>
