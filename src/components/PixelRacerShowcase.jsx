@@ -188,8 +188,8 @@ export default function PixelRacerShowcase() {
                   <canvas ref={canvasRef} className="arcade-canvas" />
 
                   <div className="canvas-overlay-hud">
-                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)' }}>
-                      ⚡ {speed} KM/H
+                    <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Zap size={14} /> {speed} KM/H
                     </div>
                     <div className="hud-speedometer" style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-primary)', paddingLeft: '20px' }}>
                       LAP {lapTime}

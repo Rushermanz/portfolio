@@ -70,6 +70,24 @@ export const education = [
   }
 ];
 
+export const services = [
+  {
+    id: "01",
+    title: "Full-Stack Web Development",
+    description: "Engineering responsive, end-to-end web applications by integrating interactive React frontends with robust Python (Flask) or Node.js backends, complete with state management and modular architecture."
+  },
+  {
+    id: "02",
+    title: "Backend Development",
+    description: "Designing and developing scalable backend systems, RESTful APIs, and database architectures using Python, Flask, Node.js, SQLite, and Supabase with secure data handling and real-time synchronization."
+  },
+  {
+    id: "03",
+    title: "Game Development",
+    description: "Building interactive games and simulation systems with a focus on gameplay programming, custom mechanics, physics and collision systems, AI-driven behaviors, player interactions, and real-time game logic across different development frameworks and engines."
+  }
+];
+
 export const skillCategories = [
   {
     category: "Frontend Development",

@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="footer-links">
           <a href="#about" className="footer-link">About</a>
           <a href="#projects" className="footer-link">Projects</a>
-          <a href="#skills" className="footer-link">Skills</a>
+          <a href="#services" className="footer-link">Services</a>
           <a href="#contact" className="footer-link">Contact</a>
         </div>
 
