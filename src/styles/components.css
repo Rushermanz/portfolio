@@ -893,13 +893,8 @@
     min-width: 320px;
   }
 
-  #flagship .executive-card {
-    padding: 20px !important;
-  }
-
-  #flagship .grid-2 {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
+  #flagship {
+    display: none !important;
   }
 }
 
