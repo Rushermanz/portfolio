@@ -81,16 +81,11 @@ export default function Contact() {
     <section id="contact" className="section">
       <div className="container">
         <div className="section-header">
-          <div className="section-tag">
-            <MessageSquare size={16} />
-            <span>Direct Communication</span>
-          </div>
+
           <h2 className="section-title">
             Get In <span className="accent-text">Touch</span>
           </h2>
-          <p className="section-subtitle">
-            Open to internships, entry-level full-stack positions, software development opportunities, and technical collaborations.
-          </p>
+
         </div>
 
         <div className="contact-grid">

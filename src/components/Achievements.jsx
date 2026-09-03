@@ -9,14 +9,12 @@ export default function Achievements() {
         <div className="section-header">
           <div className="section-tag">
             <Trophy size={16} />
-            <span>Hackathon & Competitive Milestones</span>
+            <span>Competitive Milestones</span>
           </div>
           <h2 className="section-title">
             Hackathon <span className="accent-text">Achievements</span>
           </h2>
-          <p className="section-subtitle">
-            Demonstrated rapid prototyping, problem-solving, and team presentation in collegiate software engineering hackathons.
-          </p>
+
         </div>
 
         <div className="grid-2" style={{ gap: '28px' }}>
